@@ -70,7 +70,7 @@ if not os.path.exists(args.save_folder):
 
 def train():
     if args.dataset == 'COCO':
-        if args.dataset_root == VOC_ROOT:
+        if args.dataset_root == COCO_ROOT:
             if not os.path.exists(COCO_ROOT):
                 parser.error('Must specify dataset_root if specifying dataset')
             print("WARNING: Using default COCO dataset_root because " +
@@ -81,7 +81,7 @@ def train():
                                 transform=SSDAugmentation(cfg['min_dim'],
                                                           MEANS))
     elif args.dataset == 'VOC':
-        if args.dataset_root == COCO_ROOT:
+        if args.dataset_root == VOC_ROOT:
             parser.error('Must specify dataset if specifying dataset_root')
         cfg = voc
         dataset = VOCDetection(root=args.dataset_root,
